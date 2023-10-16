@@ -1,59 +1,48 @@
 #!/usr/bin/python3
-'''AirBnB clone project File Storage'''
+"""This is the File Storage module."""
 import json
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
 from models.city import City
-from models.amenity import Amenity
 from models.place import Place
+from models.amenity import Amenity
 from models.review import Review
 
 
 class FileStorage:
-    """
-    This is a storage engine for AirBnB clone project
-    Class Methods:
-    all: Returns the object
-    new: updates the dictionary id
-    save: Serializes, or converts Python objects into JSON strings
-    reload: Deserializes, or converts JSON strings into Python objects.
-    Class Attributes:
-    __file_path (str): The name of the file to save objects to.
-    __objects (dict): A dictionary of instantiated objects.
-    class_dict (dict): A dictionary of all the classes.
-    """
+    """The file storage class """
     __file_path = 'file.json'
     __objects = {}
 
-    class_dict = {"BaseModel": BaseModel, "User": User, "Place": Place,
-            "Amenity": Amenity, "City": City, "Review": Review, "State": State}
-
     def all(self):
-        '''Return dictionary of <class>.<id> : object instance'''
-        return self.__objects
+        """return the __objects"""
+        return (self.__objects)
 
     def new(self, obj):
-        '''Set new __objects to existing dictionary of instances'''
-        if obj:
-            key = '{}.{}'.format(obj.__class__.__name__, obj.id)
-            self.__objects[key] = obj
+        """
+          sets in __objects the obj with key
+          <obj class name>.id
+        """
+        self.__objects["{}.{}".format(type(obj).__name__, obj.id)] = obj
 
     def save(self):
-        """Save/serialize obj dictionaries to json file"""
-        obj_dict = {}
-        for key, obj in self.__objects.items():
-            obj_dict[key] = obj.to_dict()
-            with open(self.__file_path, 'w', encoding="UTF-8") as f:
-                json.dump(obj_dict, f)
+        """
+           serializes __objects to the JSON file (path: __file_path)
+        """
+        with open(self.__file_path, 'w') as s_file:
+            dict_form = {}
+            for k, v in self.__objects.items():
+                dict_form[k] = v.to_dict()
+            json.dump(dict_form, s_file)
 
     def reload(self):
-        """Deserialize/convert obj dicts back to instances, if it exists"""
+        """
+          deserializes the JSON file to __objects
+        """
         try:
-            with open(self.__file_path, 'r', encoding="UTF-8") as f:
-                new_obj_dict = json.load(f)
-            for key, value in new_obj_dict.items():
-                obj = self.class_dict[value['__class__']](**value)
-                self.__objects[key] = obj
+            with open(self.__file_path, 'r') as r_file:
+                for obj in json.load(r_file).values():
+                    self.new(eval(obj["__class__"])(**obj))
         except FileNotFoundError:
-            pass
+            return

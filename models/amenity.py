@@ -1,14 +1,14 @@
 #!/usr/bin/python3
-"""
-amenity class inheritting from the basemodel class
+"""This is the Amenity Model module.
+Contains the Amenity class that inherits from BaseModel.
 """
 from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
+    """This class defines an Amenity.
+    Attributes:
+        name (str): the amenity's name.
     """
-    subclass of baseModel class
-    attributes:
-        name: string
-    """
+
     name = ""
