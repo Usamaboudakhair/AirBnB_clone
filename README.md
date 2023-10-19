@@ -235,7 +235,7 @@ show <class> <id>
 <details>
     <summary>Oussama Aboudakhair</summary>
     <ul>
-    <li><a href="https://www.github.com/Usama1boudakhair">Github</a></li>
+    <li><a href="https://www.github.com/Usamaboudakhair">Github</a></li>
     <li><a href="mailto: usama.aboudakhair1@gmail.com">e-mail</a></li>
     </ul>
 </details>
