@@ -233,16 +233,9 @@ show <class> <id>
 ```
 ## Authors
 <details>
-    <summary>Mustapha Oyebamiji</summary>
+    <summary>Oussama Aboudakhair</summary>
     <ul>
-    <li><a href="https://www.github.com/Musoye">Github</a></li>
-    <li><a href="mailto:oyebamijimustapha44@gmail.com">e-mail</a></li>
-    </ul>
-</details>
-<details>
-    <summary>Moges Amane</summary>
-    <ul>
-    <li><a href="https://www.github.com/stoicism-sympathei">Github</a></li>
-    <li><a href="mailto:mogesanonymous@gmail.co">e-mail</a></li>
+    <li><a href="https://www.github.com/Usama1boudakhair">Github</a></li>
+    <li><a href="mailto: usama.aboudakhair1@gmail.com">e-mail</a></li>
     </ul>
 </details>
